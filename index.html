@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime42 Longevity</title>
+<meta name="description" content="Physician-guided hormone optimization, metabolic health and longevity memberships for driven professionals 40–65. Labs, provider care and treatment delivered to your door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0f0d; --bg2:#161814; --card:#1c1f1a; --line:#2c3029;
+    --text:#ecebe4; --muted:#a3a497; --gold:#c9a96a; --gold2:#e3c98f; --ink:#0e0f0d;
+    --ok:#7fb48a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+  h1{font-size:clamp(2.2rem,5.5vw,3.8rem)}
+  h2{font-size:clamp(1.7rem,3.6vw,2.6rem);margin-bottom:16px}
+  h3{font-size:1.25rem;margin-bottom:8px}
+  .eyebrow{color:var(--gold);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:block}
+  .muted{color:var(--muted)}
+  section{padding:88px 0;border-top:1px solid var(--line)}
+  .btn{display:inline-block;background:var(--gold);color:var(--ink);padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:1rem;transition:background .2s}
+  .btn:hover{background:var(--gold2)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--gold)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(14,15,13,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:Fraunces,serif;font-size:1.3rem;font-weight:600;text-decoration:none}
+  .logo span{color:var(--gold)}
+  nav .links{display:flex;gap:28px;align-items:center;font-size:.92rem}
+  nav .links a{text-decoration:none;color:var(--muted)}
+  nav .links a:hover{color:var(--text)}
+  nav .links a.btn{padding:10px 20px;font-size:.9rem;color:var(--ink)}
+  @media(max-width:760px){nav .links a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{padding:110px 0 90px;border-top:0;background:radial-gradient(ellipse at 70% 0%,rgba(201,169,106,.13),transparent 60%)}
+  .hero p.lead{font-size:1.18rem;color:var(--muted);max-width:620px;margin:22px 0 34px}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:48px;color:var(--muted);font-size:.9rem}
+  .trust div::before{content:"✓ ";color:var(--gold)}
+
+  /* letter */
+  .letter{max-width:720px}
+  .letter p{margin-bottom:18px;font-size:1.08rem;color:#d6d5cc}
+  .letter strong{color:var(--text)}
+  .signs{list-style:none;margin:22px 0 28px}
+  .signs li{padding:12px 0 12px 32px;border-bottom:1px solid var(--line);position:relative}
+  .signs li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+
+  /* steps */
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:760px){.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+  .num{font-family:Fraunces,serif;color:var(--gold);font-size:2rem;margin-bottom:8px}
+
+  /* pricing */
+  .price{display:flex;flex-direction:column}
+  .price.feat{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+  .tag{align-self:flex-start;background:var(--gold);color:var(--ink);font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:999px;margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
+  .amt{font-family:Fraunces,serif;font-size:2.2rem;margin:6px 0 2px}
+  .amt small{font-family:Inter;font-size:.9rem;color:var(--muted)}
+  .price ul{list-style:none;margin:18px 0 24px;flex:1}
+  .price li{padding:7px 0;font-size:.93rem;color:#d6d5cc;border-bottom:1px dashed var(--line)}
+  .price li::before{content:"✓  ";color:var(--gold)}
+  .price .btn{text-align:center}
+  .fine{font-size:.82rem;color:var(--muted);margin-top:22px}
+
+  /* quiz */
+  .quiz{max-width:680px;margin:0 auto}
+  .q{display:none}
+  .q.on{display:block}
+  .opts{display:grid;gap:10px;margin-top:20px}
+  .opt{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:left;color:var(--text);font:inherit;cursor:pointer;transition:border-color .15s}
+  .opt:hover,.opt:focus-visible{border-color:var(--gold);outline:none}
+  .bar{height:4px;background:var(--line);border-radius:4px;margin-bottom:28px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+  .result h3{font-size:1.7rem}
+  .note{font-size:.82rem;color:var(--muted);margin-top:16px}
+
+  /* faq */
+  details{border-bottom:1px solid var(--line);padding:20px 0}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";color:var(--gold);font-size:1.3rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:48px 0;font-size:.82rem;color:var(--muted)}
+  footer p{margin-bottom:12px;max-width:820px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Prime<span>42</span></a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#plans">Plans</a>
+      <a href="#faq">FAQ</a>
+      <a href="#quiz" class="btn">See if you qualify</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Physician-guided longevity · For professionals 40–65</span>
+    <h1>You built a life worth<br>staying sharp for.</h1>
+    <p class="lead">Prime42 is a private membership for hormone optimization, metabolic health and long-term performance. It starts with real lab data, a licensed provider and a plan built around you. Care happens online, and labs are done near you.</p>
+    <div class="ctas">
+      <a href="#quiz" class="btn">Take the 60-second assessment</a>
+      <a href="#plans" class="btn ghost">View membership plans</a>
+    </div>
+    <div class="trust">
+      <div>Licensed, board-certified providers</div>
+      <div>Labs at 2,000+ locations</div>
+      <div>Treatment shipped to your door</div>
+      <div>Cancel anytime</div>
+    </div>
+  </div>
+</header>
+
+<!-- SALES LETTER -->
+<section>
+  <div class="wrap letter">
+    <span class="eyebrow">A note before you book</span>
+    <h2>"Normal for your age" is not a plan.</h2>
+    <p>If you're in your 40s, 50s or early 60s, you've probably noticed some of this:</p>
+    <ul class="signs">
+      <li>Your energy fades by mid-afternoon, even when you sleep "enough."</li>
+      <li>Your body holds onto weight no matter how disciplined you are.</li>
+      <li>Your focus, drive and recovery aren't what they were five years ago.</li>
+      <li>You had a physical, were told your labs are "fine," and still don't feel fine.</li>
+    </ul>
+    <p>A standard annual physical checks a handful of markers against ranges built for the general population. It's designed to catch disease, <strong>not to help you perform at your best for the next 30 years.</strong></p>
+    <p>Prime42 takes a different approach. We start with a comprehensive panel covering hormones, metabolic, cardiovascular and inflammatory markers. Then a licensed provider reviews it with you one-on-one. If there's something worth addressing, you get a clear, monitored protocol. If there isn't, we'll tell you that too.</p>
+    <p><strong>This isn't for everyone.</strong> It's for people who want data over guesswork, are willing to follow a plan, and see their health as their most valuable long-term investment. If that's you, take the short assessment below. It shows which membership fits your goals.</p>
+    <a href="#quiz" class="btn">Start the assessment</a>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>Four steps. No waiting rooms.</h2>
+    <div class="grid g4" style="margin-top:36px">
+      <div class="card"><div class="num">01</div><h3>Assess</h3><p class="muted">Complete a short online assessment and a secure medical intake.</p></div>
+      <div class="card"><div class="num">02</div><h3>Test</h3><p class="muted">Get a 40+ biomarker panel drawn at a lab near you, usually in under 15 minutes.</p></div>
+      <div class="card"><div class="num">03</div><h3>Review</h3><p class="muted">Meet a licensed provider by video to go over every result and your goals.</p></div>
+      <div class="card"><div class="num">04</div><h3>Optimize</h3><p class="muted">If treatment is appropriate, your protocol ships to your door. Labs are re-checked every 90 days.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE ADDRESS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Programs</span>
+    <h2>What members work on with us</h2>
+    <div class="grid g3" style="margin-top:36px">
+      <div class="card"><h3>Hormone optimization</h3><p class="muted">Testosterone and hormone evaluation for men and women, including perimenopause and menopause support. Any treatment is provider-prescribed and lab-monitored.</p></div>
+      <div class="card"><h3>Metabolic &amp; weight health</h3><p class="muted">Medically supervised weight management, including GLP-1 medications when clinically appropriate, with a focus on keeping muscle.</p></div>
+      <div class="card"><h3>Longevity labs &amp; planning</h3><p class="muted">Advanced cardiovascular and inflammatory markers (ApoB, Lp(a), hs-CRP and more) tracked over time, with a written plan for the long game.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="plans">
+  <div class="wrap">
+    <span class="eyebrow">Membership</span>
+    <h2>Simple plans. No surprise bills.</h2>
+    <p class="muted" style="max-width:620px">Most members start with the Prime Panel. After your results review, your provider will recommend the membership that fits, if one does.</p>
+    <div class="grid g4" style="margin-top:36px">
+      <div class="card price">
+        <h3>Prime Panel</h3>
+        <div class="amt">$199 <small>one-time</small></div>
+        <p class="muted">The starting point.</p>
+        <ul>
+          <li>40+ biomarker blood panel</li>
+          <li>Hormones, metabolic, thyroid, lipids</li>
+          <li>1:1 video results review</li>
+          <li>Personal summary report</li>
+        </ul>
+        <a href="#" class="btn ghost" data-book="panel">Order panel</a>
+      </div>
+      <div class="card price">
+        <h3>Membership</h3>
+        <div class="amt">$179 <small>/ month</small></div>
+        <p class="muted">Ongoing provider care.</p>
+        <ul>
+          <li>Licensed provider oversight</li>
+          <li>Labs every 90 days</li>
+          <li>Unlimited care-team messaging</li>
+          <li>Protocol adjustments</li>
+          <li>Medications billed separately, if prescribed</li>
+        </ul>
+        <a href="#" class="btn ghost" data-book="membership">Book consult</a>
+      </div>
+      <div class="card price feat">
+        <span class="tag">Most popular</span>
+        <h3>Optimize</h3>
+        <div class="amt">$299 <small>/ month</small></div>
+        <p class="muted">All-inclusive protocol.</p>
+        <ul>
+          <li>Everything in Membership</li>
+          <li>Standard protocol medication included, if prescribed</li>
+          <li>Hormone or metabolic program</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <a href="#" class="btn" data-book="optimize">Book consult</a>
+      </div>
+      <div class="card price">
+        <h3>Executive</h3>
+        <div class="amt">$6,000 <small>/ year</small></div>
+        <p class="muted">Or $549/month.</p>
+        <ul>
+          <li>Everything in Optimize</li>
+          <li>Advanced longevity panel</li>
+          <li>Quarterly 45-min strategy visits</li>
+          <li>Annual DEXA + VO₂ max (DFW partner)</li>
+          <li>Written longevity plan</li>
+          <li>Concierge text line</li>
+        </ul>
+        <a href="#" class="btn ghost" data-book="executive">Apply</a>
+      </div>
+    </div>
+    <p class="fine">Treatment is prescribed only when a licensed provider decides it is clinically appropriate after evaluation. Membership does not guarantee a prescription. Lab draw fees may vary by location. Not insurance. HSA/FSA eligibility varies.</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="quiz">
+      <span class="eyebrow" style="text-align:center">60-second assessment</span>
+      <h2 style="text-align:center">Which membership fits you?</h2>
+      <p class="muted" style="text-align:center;margin-bottom:32px">Five questions. Your answers stay in your browser and are not sent anywhere.</p>
+      <div class="bar"><i id="bar"></i></div>
+      <div id="qs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap" style="max-width:780px">
+    <span class="eyebrow">Questions</span>
+    <h2>Frequently asked</h2>
+    <details><summary>Who are the providers?</summary><p>All care is delivered by independent, licensed physicians and nurse practitioners in our affiliated medical group. Every clinical decision, including whether treatment is appropriate, is made by your provider.</p></details>
+    <details><summary>Will I definitely get a prescription?</summary><p>No. Prescriptions are issued only when your provider decides they're medically appropriate based on your labs, history and goals. Some members' best plan is lifestyle, nutrition and monitoring, and we'll tell you if that's you.</p></details>
+    <details><summary>Where do I get my labs drawn?</summary><p>At a partner lab location near you (thousands nationwide), or with an at-home draw where available.</p></details>
+    <details><summary>Do you take insurance?</summary><p>Prime42 is a cash-pay membership. Many members pay with an HSA or FSA card, but eligibility depends on your plan. We can provide receipts for reimbursement.</p></details>
+    <details><summary>Can I cancel?</summary><p>Yes. Monthly memberships can be canceled anytime before your next billing date. Executive annual plans are prorated per our membership terms.</p></details>
+    <details><summary>What states do you serve?</summary><p>We're launching in Texas, starting with Dallas–Fort Worth, and expanding to more states. Availability depends on where our providers are licensed.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:var(--text)">Prime42 Longevity LLC</strong> provides management, technology and administrative services. Medical services are provided by independent licensed providers in an affiliated professional medical group, who exercise independent clinical judgment.</p>
+    <p>This website is for informational purposes only and is not medical advice. Results vary by individual. Some medications offered may be compounded; compounded medications are not FDA-approved and have not been evaluated by the FDA for safety, effectiveness or quality. If you are experiencing a medical emergency, call 911.</p>
+    <p>© <span id="yr"></span> Prime42 Longevity · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Telehealth consent</a></p>
+  </div>
+</footer>
+
+<script>
+  // ==== SET THIS: your vendor's booking / checkout link(s) ====
+  const BOOKING_URL = "https://calendly.com/YOUR-LINK";
+  const PANEL_CHECKOUT_URL = BOOKING_URL; // swap for a direct Stripe/vendor checkout for the $199 panel
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-book]').forEach(a=>{
+    a.href = a.dataset.book === 'panel' ? PANEL_CHECKOUT_URL : BOOKING_URL + '?plan=' + a.dataset.book;
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+
+  const Q = [
+    {q:"What's your age range?", o:[["Under 35",0],["35–44",2],["45–54",3],["55–65",3],["Over 65",2]]},
+    {q:"What's your #1 goal right now?", o:[["More energy, drive and focus","hormone"],["Lose stubborn weight and keep muscle","metabolic"],["Extend healthspan and prevent decline","longevity"],["All of the above","all"]]},
+    {q:"When were your hormones and advanced markers last tested?", o:[["Never / not sure",2],["More than a year ago",2],["In the past year",1]]},
+    {q:"How involved do you want your care team to be?", o:[["Test once and get a clear read",0],["Ongoing monitoring and adjustments",2],["White-glove, high-touch, quarterly strategy",4]]},
+    {q:"How do you think about investing in your health?", o:[["Keep it as low-cost as possible",0],["Worth a few hundred a month for real results",2],["It's my highest-ROI investment, so I want the best",4]]}
+  ];
+  let i=0, score=0, goal="all";
+  const box=document.getElementById('qs'), bar=document.getElementById('bar');
+
+  function render(){
+    bar.style.width = (i/Q.length*100)+'%';
+    if(i>=Q.length) return result();
+    const it=Q[i];
+    box.innerHTML = `<div class="q on"><h3>${i+1}. ${it.q}</h3><div class="opts">${
+      it.o.map((o,k)=>`<button class="opt" data-k="${k}">${o[0]}</button>`).join('')}</div></div>`;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const v=it.o[b.dataset.k][1];
+      if(typeof v==='number') score+=v; else goal=v;
+      i++; render();
+    });
+  }
+  function result(){
+    let plan, name, why;
+    if(score>=11){plan='executive';name='Executive';why="You want a high-touch, data-driven partner for the long game. Executive includes advanced longevity labs, quarterly strategy visits and annual DEXA + VO₂ max testing.";}
+    else if(score>=6){plan='optimize';name='Optimize';why= goal==='metabolic' ? "You want steady, supervised progress on weight and metabolic health. Optimize includes ongoing monitoring and, if prescribed, your standard protocol medication." : "You want ongoing optimization with your protocol included. Optimize is our most popular plan for members focused on energy, drive and recovery.";}
+    else {plan='panel';name='Prime Panel';why="Start with data. The $199 Prime Panel and a 1:1 provider review will show exactly where you stand before you commit to anything.";}
+    const href = plan==='panel' ? PANEL_CHECKOUT_URL : BOOKING_URL+'?plan='+plan;
+    box.innerHTML = `<div class="card result">
+      <span class="eyebrow">Your recommended starting point</span>
+      <h3>${name}</h3><p class="muted" style="margin:10px 0 24px">${why}</p>
+      <a class="btn" href="${href}" target="_blank" rel="noopener">${plan==='panel'?'Order your Prime Panel':'Book your consult'}</a>
+      <a class="btn ghost" href="#plans" style="margin-left:8px">Compare plans</a>
+      <p class="note">This is a general recommendation, not a medical assessment. A licensed provider will decide what's appropriate for you after your intake and labs.</p>
+    </div>`;
+  }
+  render();
+</script>
+</body>
+</html>
